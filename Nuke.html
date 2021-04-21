@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<meta charset="UTF-8">
+<title>☢Nuke☢</title>
+
+<head>
+    <style>
+        body {
+            font-family: monospace;
+            text-align: center;
+        }
+
+        body * {
+            font-family: monospace;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            /* font-style: italic; */
+            font-size: 2.5rem;
+        }
+
+        div {
+            padding: 1rem;
+        }
+
+        div * {
+            width: 70%;
+        }
+
+        div textarea {
+            height: 10rem;
+        }
+
+        .note,
+        .note * {
+            font-size: 1rem;
+        }
+
+        .bold {
+            font-weight: 900;
+        }
+        .bolder {
+            font-weight: bolder;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>"Nuke 'em!"</h1>
+    <h2>☲☢☠☢☲</h2>
+    <div class="note">NOTE : Enter <span class="bolder">','</span> separated URLs. <span class="bold">If > 5, increase autoCloseFrequency</span>, &
+        pray RAM got enough juice. Remember, <span class="bold">more URLs = less tabs allocated to each URL within the
+            autoCloseFrequency limit</span>.</div>
+    <div><textarea></textarea>
+    </div>
+    <div><button onclick="fire();">"Incinerate!!!"</button></div>
+    <script type="text/javascript">
+        function fire() {
+            var urls = document.querySelector('textarea').value.replace(/\n/ig, '').replace(/ /ig, '').split(',').filter(function (url) {
+                return !!url;
+            });
+            if (urls.length === 0) {
+                return;
+            }
+            var win = {};
+            var autoCloseFrequency = 1000; // after opening how many tabs the tool should close them to preserve memory and also give ample amount of time for most of the tabs to load
+            var counter = 0; // a counter to count all windows that have been opened and then compare it with autoCloseFrequency for cleanup
+            for (var i = 1; i > 0; i++) {
+                urls.forEach(function (url) {
+                    win[++counter] = window.open(url);
+                    if (counter % autoCloseFrequency === 0) {
+                        for (var j = 1; j <= counter; j++) {
+                            try {
+                                win[j].close();
+                                delete win[j];
+                            } catch {
+                                // too lazy to bother about already closed windows, i.e., if delete win[j] fails, which shouldn't...
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
