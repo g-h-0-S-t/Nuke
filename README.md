@@ -1,3 +1,5 @@
+<img src="https://i.pinimg.com/originals/23/a1/1f/23a11f14ab93d3ed4541960141e380ad.gif" width="200" />  
+
 # ☲☢☠ Nuke ☠☢☲
 Now nuke & incinerate multiple websites with this bulk URL DoS Tool!  
 Accepts multiple ',' separated URLs and performs an HTTP/HTTPS GET attack by opening Infinite Browser Tabs, backed up by Crash Protection, where opened windows are auto-closed for RAM relief.  
